@@ -1,0 +1,1 @@
+{"version":3,"file":"init-config.js","sourceRoot":"","sources":["../../../bin/init-config.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,8DAA2D;AAC3D,kCAAmC;AAEnC,CAAC,GAAS,EAAE;IACX,MAAM,IAAI,uBAAU,EAAE,CAAC,MAAM,EAAE,CAAC;IAChC,OAAO,CAAC,GAAG,CAAC,wBAAwB,GAAG,eAAQ,CAAC,CAAC;AAClD,CAAC,CAAA,CAAC,EAAE,CAAC"}

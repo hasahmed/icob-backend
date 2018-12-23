@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "rootDir": "../",
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+        "es2017",
+        "dom"
+    ],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "noUnusedLocals": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "node",
+    "typeRoots": [
+        "../../node_moduels/@types"
+    ]
+  },
+  "exclude": [
+    "dist"
+  ]
+}

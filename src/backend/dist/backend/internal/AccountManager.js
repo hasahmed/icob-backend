@@ -1,0 +1,58 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const SqlHandler_1 = require("./SqlHandler");
+const MailHandler_1 = require("./MailHandler");
+const schema_1 = require("../db/schema");
+const model_1 = require("../model");
+class AccountManger {
+    constructor(mailHandler = new MailHandler_1.MailHandler()) {
+        this.mailHandler = mailHandler;
+        this.tmpAuthKeyTable = new Map();
+    }
+    acctCreate(acctParams) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = new model_1.User(acctParams.email, acctParams.firstName, acctParams.lastName, acctParams.password);
+            this.tmpAuthKeyTable.set(acctParams.email, user.tmpAuthHash);
+            yield SqlHandler_1.SqlHandler.createAccount(user);
+            const mailParams = {
+                to: acctParams.email,
+                subject: 'Welcome to Begin',
+                html: `Hello ${acctParams.firstName},
+			<br />
+			Welcome to Begin. The following is your confirmation code.
+			<pre>
+			${user.tmpAuthHash}
+			</pre>
+			`
+            };
+            this.mailHandler.sendMail(mailParams);
+            return true;
+        });
+    }
+    acctVerify(authKey) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield SqlHandler_1.SqlHandler.getUserWhere({
+                [`${schema_1.UserSchema.tmpAuthHash[1]}`]: authKey
+            });
+            if (user) {
+                user.tmpAuthHash = '';
+                user.activated = true;
+                SqlHandler_1.SqlHandler.updateUser(user);
+            }
+            else {
+                return false;
+            }
+            return true;
+        });
+    }
+}
+exports.AccountManger = AccountManger;
+//# sourceMappingURL=AccountManager.js.map
