@@ -1,4 +1,4 @@
-import { SqlHandler } from './SqlHandler';
+import { SqlHandler } from './sql-handler';
 // import { AccountCreationParams} from './types';
 // import * as uuidv4 from 'uuid/v4';
 import { MailHandler, MailOptions } from './MailHandler';

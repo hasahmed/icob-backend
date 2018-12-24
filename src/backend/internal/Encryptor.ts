@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { ConfCrypt } from './config/ConfCrypt';
+import { ConfCrypt } from './config/conf-crypt';
 import * as uuidv4 from 'uuid/v4';
 
 

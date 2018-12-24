@@ -1,4 +1,4 @@
-import { InitConfig } from "../internal/config/InitConfig";
+import { InitConfig } from "../internal/config/init-config";
 import { APP_CONF } from '../conf';
 
 (async () => {

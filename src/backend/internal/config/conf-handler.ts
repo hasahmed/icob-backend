@@ -1,9 +1,11 @@
 // import { APP_CONF } from '../../../common/common-data'
 import * as fs from 'fs';
-import { ConfMailer } from './ConfMailer';
-import { ConfAll } from './ConfAll';
+import { ConfMailer } from './conf-mailer';
+import { ConfAll } from './conf-all';
 import { APP_CONF } from '../../conf';
-import { ConfCrypt } from './ConfCrypt';
+import { ConfCrypt } from './conf-crypt';
+import { ConfEnv } from './conf-env';
+import { ConfDb } from './conf-db';
 
 export class ConfigHandler {
 
@@ -22,14 +24,15 @@ export class ConfigHandler {
 	 * accessesors to the specific configs
 	 * instances
 	 */
+	public get mailer(): ConfMailer { return this.confAll.mailer; }
+	public get crypt(): ConfCrypt { return this.confAll.crypt; }
+	public get env(): ConfEnv { return this.confAll.env; }
+	public get db(): ConfDb { return this.confAll.db; }
+	// end access to config instances
+
+
 	public setConf(newConf: ConfAll) {
 		this.confAll = newConf;
-	}
-	public get mailer(): ConfMailer {
-		return this.confAll.mailer;
-	}
-	public get crypt(): ConfCrypt {
-		return this.confAll.crypt;
 	}
 	public confWrite() {
 		fs.writeFileSync(this.confPath, JSON.stringify(this.confAll, null, 2));

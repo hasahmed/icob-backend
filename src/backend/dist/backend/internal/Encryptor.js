@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto = require("crypto");
-const ConfCrypt_1 = require("./config/ConfCrypt");
+const conf_crypt_1 = require("./config/conf-crypt");
 const uuidv4 = require("uuid/v4");
 class Encryptor {
-    constructor(confCrypt = new ConfCrypt_1.ConfCrypt()) {
+    constructor(confCrypt = new conf_crypt_1.ConfCrypt()) {
         this.confCrypt = confCrypt;
         this.ALGO = 'aes-256-cbc';
     }

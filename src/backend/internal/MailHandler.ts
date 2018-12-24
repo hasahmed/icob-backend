@@ -1,6 +1,6 @@
 import * as nodemailer from 'nodemailer';
-import { ConfMailer } from './config/ConfMailer';
-import { ConfigHandler } from './config/ConfHandler';
+import { ConfMailer } from './config/conf-mailer';
+import { ConfigHandler } from './config/conf-handler';
 import { Encryptor } from './Encryptor';
 
 export interface MailOptions {

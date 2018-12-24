@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const SqlHandler_1 = require("./SqlHandler");
+const sql_handler_1 = require("./sql-handler");
 const MailHandler_1 = require("./MailHandler");
 const schema_1 = require("../db/schema");
 const model_1 = require("../model");
@@ -21,7 +21,7 @@ class AccountManger {
         return __awaiter(this, void 0, void 0, function* () {
             const user = new model_1.User(acctParams.email, acctParams.firstName, acctParams.lastName, acctParams.password);
             this.tmpAuthKeyTable.set(acctParams.email, user.tmpAuthHash);
-            yield SqlHandler_1.SqlHandler.createAccount(user);
+            yield sql_handler_1.SqlHandler.createAccount(user);
             const mailParams = {
                 to: acctParams.email,
                 subject: 'Welcome to Begin',
@@ -39,13 +39,13 @@ class AccountManger {
     }
     acctVerify(authKey) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield SqlHandler_1.SqlHandler.getUserWhere({
+            const user = yield sql_handler_1.SqlHandler.getUserWhere({
                 [`${schema_1.UserSchema.tmpAuthHash[1]}`]: authKey
             });
             if (user) {
                 user.tmpAuthHash = '';
                 user.activated = true;
-                SqlHandler_1.SqlHandler.updateUser(user);
+                sql_handler_1.SqlHandler.updateUser(user);
             }
             else {
                 return false;

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer = require("nodemailer");
-const ConfHandler_1 = require("./config/ConfHandler");
+const conf_handler_1 = require("./config/conf-handler");
 const Encryptor_1 = require("./Encryptor");
 class MailHandler {
-    constructor(confMailer = new ConfHandler_1.ConfigHandler().mailer, crydec = new Encryptor_1.Encryptor(new ConfHandler_1.ConfigHandler().crypt)) {
+    constructor(confMailer = new conf_handler_1.ConfigHandler().mailer, crydec = new Encryptor_1.Encryptor(new conf_handler_1.ConfigHandler().crypt)) {
         this.confMailer = confMailer;
         this.crydec = crydec;
         this.transporter = nodemailer.createTransport({

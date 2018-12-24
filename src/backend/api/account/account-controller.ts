@@ -1,6 +1,6 @@
 import { AppController } from '../api-common/app-controller';
 import { AccountManger } from '../../internal/AccountManager';
-import { SqlHandler } from '../../internal/SqlHandler';
+import { SqlHandler } from '../../internal/sql-handler';
 import { User } from '../../model';
 import { Encryptor } from '../../internal/Encryptor';
 import { Resource } from '../../model/Resource';

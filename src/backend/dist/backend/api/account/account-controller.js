@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_controller_1 = require("../api-common/app-controller");
 const AccountManager_1 = require("../../internal/AccountManager");
-const SqlHandler_1 = require("../../internal/SqlHandler");
+const sql_handler_1 = require("../../internal/sql-handler");
 const model_1 = require("../../model");
 const Encryptor_1 = require("../../internal/Encryptor");
 const Resource_1 = require("../../model/Resource");
@@ -35,7 +35,7 @@ class AccountController extends app_controller_1.AppController {
     login(loginParams) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email } = loginParams;
-            const user = yield SqlHandler_1.SqlHandler.getUserWhere({ email });
+            const user = yield sql_handler_1.SqlHandler.getUserWhere({ email });
             if (user) {
                 if (loginParams.email === user.email &&
                     user.password === Encryptor_1.Encryptor.hash(loginParams.password)) {
@@ -57,7 +57,7 @@ class AccountController extends app_controller_1.AppController {
     }
     acctExists(acctParams) {
         return __awaiter(this, void 0, void 0, function* () {
-            return !!(yield SqlHandler_1.SqlHandler.getUserWhere({ email: acctParams.email }));
+            return !!(yield sql_handler_1.SqlHandler.getUserWhere({ email: acctParams.email }));
         });
     }
 }

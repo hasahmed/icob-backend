@@ -1,5 +1,5 @@
 import 'jest';
-import { SqlHandler } from './SqlHandler';
+import { SqlHandler } from './sql-handler';
 
 describe('SqlHandler Tests', () => {
 	it('should exist', () => {

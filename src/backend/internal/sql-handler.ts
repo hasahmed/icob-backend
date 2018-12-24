@@ -2,17 +2,46 @@ import knex = require('knex');
 import { UserSchema } from '../db/schema';
 import { SQLITE_DB } from '../conf';
 import { User } from '../model';
+import { ConfigHandler } from './config/conf-handler';
 
 export class SqlHandler {
 	private static _knexInst: knex;
 	private static init(){
-		SqlHandler._knexInst = knex({
+		const conf = new ConfigHandler();
+		const devDbConf = {
 			client: 'sqlite3',
 			connection: {
 				filename: SQLITE_DB
 			},
 			useNullAsDefault: true
-		});
+		};
+		const prodDbConf = {
+			client: 'pg',
+			connection: {
+				host: conf.db.host + ':' + conf.db.port,
+				user: conf.db.username,
+				password: conf.db.password,
+				database: conf.db.dbName,
+			}
+		};
+		let dbConf: Object = devDbConf;
+	
+
+		switch(conf.env.env) {
+			case 'dev':
+				dbConf = devDbConf;
+				break;
+			case 'stag':
+				dbConf = devDbConf;
+				break;
+			case 'prod':
+				dbConf = prodDbConf;
+				break;
+			default:
+				throw new Error("Unknown ConfEnv.env setting. Should be one of 'dev', 'stag', 'prog', but was:" + conf.env.env);
+		}
+
+		SqlHandler._knexInst = knex(dbConf);
 	}
 	private static knexInst(): knex {
 		if (!this._knexInst) {

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("jest");
-const ConfCrypt_1 = require("./config/ConfCrypt");
+const conf_crypt_1 = require("./config/conf-crypt");
 const Encryptor_1 = require("./Encryptor");
 describe('Encryptor test', () => {
     const secret = 'aGoodSecret';
-    const confCrypt = new ConfCrypt_1.ConfCrypt(secret);
+    const confCrypt = new conf_crypt_1.ConfCrypt(secret);
     const crydec = new Encryptor_1.Encryptor(confCrypt);
     let encrypted;
     it('Should be created', () => {

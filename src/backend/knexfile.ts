@@ -2,7 +2,8 @@ import * as path from 'path';
 /*
 Dont import this file
 */
-import { DB_NAME } from './conf';
+import { DB_NAME, SQLITE_DB } from './conf';
+import { ConfigHandler } from './internal/config/conf-handler';
 
 console.log("MAKE SURE YOU HAVE COMPILED BEFORE RUNNING THIS SCRIPT");
 
@@ -11,25 +12,31 @@ console.log("MAKE SURE YOU HAVE COMPILED BEFORE RUNNING THIS SCRIPT");
 // to resolve paths
 const ABS_SQL_DB =  path.join('..', '..', 'db', DB_NAME);
 
-
+const conf = new ConfigHandler();
+const devDbConf = {
+  client: 'sqlite3',
+  connection: {
+    filename: ABS_SQL_DB
+  },
+  useNullAsDefault: true
+};
+const prodDbConf = {
+  client: 'pg',
+  connection: {
+    host: conf.db.host + ':' + conf.db.port,
+    user: conf.db.username,
+    password: conf.db.password,
+    database: conf.db.dbName,
+  }
+};
 
 module.exports = {
 
-  development: {
-    client: "sqlite3",
-    connection: {
-      filename: ABS_SQL_DB
-    },
-    useNullAsDefault: true
-  },
+  development: devDbConf,
 
   staging: {
     client: "postgresql",
-    connection: {
-      database: DB_NAME,
-      user: "username",
-      password: "password"
-    },
+    connection: prodDbConf,
     pool: {
       min: 2,
       max: 10
@@ -41,11 +48,7 @@ module.exports = {
 
   production: {
     client: "postgresql",
-    connection: {
-      database: DB_NAME,
-      user: "username",
-      password: "password"
-    },
+    connection: prodDbConf,
     pool: {
       min: 2,
       max: 10

@@ -1,10 +1,10 @@
 import 'jest';
 import * as path from 'path';
-import { InitConfig } from './InitConfig';
-import { ConfMailer } from './ConfMailer';
-import { ConfCrypt } from './ConfCrypt';
+import { InitConfig } from './init-config';
+import { ConfMailer } from './conf-mailer';
+import { ConfCrypt } from './conf-crypt';
 import { Encryptor } from '../Encryptor';
-import { ConfigHandler } from './ConfHandler';
+import { ConfigHandler } from './conf-handler';
 
 const testInitConfigPath = path.join(__dirname, 'test-conf.json');
 const injectionObj = {

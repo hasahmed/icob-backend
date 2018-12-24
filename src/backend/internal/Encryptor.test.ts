@@ -1,5 +1,5 @@
 import 'jest';
-import { ConfCrypt } from './config/ConfCrypt';
+import { ConfCrypt } from './config/conf-crypt';
 import { Encryptor } from './Encryptor';
 
 describe('Encryptor test', () => {

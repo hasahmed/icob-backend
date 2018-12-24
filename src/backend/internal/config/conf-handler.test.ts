@@ -1,10 +1,10 @@
 import 'jest';
 import * as path from 'path';
-import { ConfigHandler } from './ConfHandler';
-import { ConfAll } from './ConfAll';
-import { ConfMailer } from './ConfMailer';
+import { ConfigHandler } from './conf-handler';
+import { ConfAll } from './conf-all';
+import { ConfMailer } from './conf-mailer';
 import { Encryptor } from '../Encryptor';
-import { ConfCrypt } from './ConfCrypt';
+import { ConfCrypt } from './conf-crypt';
 
 const testConfPath = path.join(process.cwd(), 'src', 'backend', 'tmp', 'testConf.json.tmp');
 

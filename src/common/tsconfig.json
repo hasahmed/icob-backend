@@ -1,0 +1,6 @@
+{
+	"extends": "../backend/tsconfig",
+  "compilerOptions": {
+    "sourceMap": true,
+  },
+}

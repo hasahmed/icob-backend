@@ -1,5 +1,5 @@
 import 'jest';
-import { SqlHandler } from '../../internal/SqlHandler';
+import { SqlHandler } from '../../internal/sql-handler';
 import { Encryptor } from '../../internal/Encryptor';
 import { User } from '../../model';
 import { AccountController } from './account-controller';
