@@ -1,6 +1,6 @@
 import 'jest';
 import { User } from './User';
-import { Resource } from '../Resource';
+import { Resource } from '../resource';
 
 describe('User tests', () => {
 

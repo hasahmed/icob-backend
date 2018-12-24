@@ -9,20 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_controller_1 = require("../api-common/app-controller");
-const AccountManager_1 = require("../../internal/AccountManager");
+const account_manager_1 = require("../../internal/account-manager");
 const sql_handler_1 = require("../../internal/sql-handler");
 const model_1 = require("../../model");
-const Encryptor_1 = require("../../internal/Encryptor");
-const Resource_1 = require("../../model/Resource");
+const encryptor_1 = require("../../internal/encryptor");
+const resource_1 = require("../../model/resource");
 const types_1 = require("../../internal/types");
 class AccountController extends app_controller_1.AppController {
-    constructor(acctManager = new AccountManager_1.AccountManger(), storage = new types_1.MemDb()) {
+    constructor(acctManager = new account_manager_1.AccountManger(), storage = new types_1.MemDb()) {
         super(storage);
         this.acctManager = acctManager;
     }
     create(accountParams) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (Resource_1.Resource.isValid(new model_1.User.CreationParams(), accountParams)
+            if (resource_1.Resource.isValid(new model_1.User.CreationParams(), accountParams)
                 && !(yield this.acctExists(accountParams))) {
                 yield this.acctManager.acctCreate(accountParams);
                 return true;
@@ -38,7 +38,7 @@ class AccountController extends app_controller_1.AppController {
             const user = yield sql_handler_1.SqlHandler.getUserWhere({ email });
             if (user) {
                 if (loginParams.email === user.email &&
-                    user.password === Encryptor_1.Encryptor.hash(loginParams.password)) {
+                    user.password === encryptor_1.Encryptor.hash(loginParams.password)) {
                     return 'this string should be replaced with a real auth token implementation';
                 }
             }

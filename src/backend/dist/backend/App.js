@@ -25,4 +25,4 @@ class App {
     }
 }
 exports.App = App;
-//# sourceMappingURL=App.js.map
+//# sourceMappingURL=app.js.map

@@ -1,6 +1,6 @@
 import 'jest';
 import { ConfCrypt } from './config/conf-crypt';
-import { Encryptor } from './Encryptor';
+import { Encryptor } from './encryptor';
 
 describe('Encryptor test', () => {
 	const secret = 'aGoodSecret';

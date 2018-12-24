@@ -1,5 +1,5 @@
 import 'jest';
-import { AccountManger } from './AccountManager';
+import { AccountManger } from './account-manager';
 
 describe('AccountManager tests', () => {
 	it('Should create the acount manager', () => {

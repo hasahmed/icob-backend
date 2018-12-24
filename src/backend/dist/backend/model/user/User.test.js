@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 require("jest");
 const User_1 = require("./User");
-const Resource_1 = require("../Resource");
+const resource_1 = require("../resource");
 describe('User tests', () => {
     const userCreationParamSchema = new User_1.User.CreationParams();
     const email = 'hello@good.com';
@@ -39,13 +39,13 @@ describe('User tests', () => {
         });
         describe('User.CreationParams.isValid', () => {
             it('Should return valid when params are empty, but properties are there', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, ucp)).toEqual(true);
+                expect(resource_1.Resource.isValid(userCreationParamSchema, ucp)).toEqual(true);
             });
             it('Should be false when empty object is passed in', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {})).toEqual(false);
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {})).toEqual(false);
             });
             it('Should be true when valid params object is passed in', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName,
                     lastName,
@@ -53,35 +53,35 @@ describe('User tests', () => {
                 })).toEqual(true);
             });
             it('Should be false when email is missing', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     firstName,
                     lastName,
                     password
                 })).toEqual(false);
             });
             it('Should be false when firstName is missing', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     lastName,
                     password
                 })).toEqual(false);
             });
             it('Should be false when lastName is missing', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName,
                     password
                 })).toEqual(false);
             });
             it('Should be false when password is missing', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName,
                     lastName,
                 })).toEqual(false);
             });
             it('Should be false when email parameter type is incorrect', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email: 10,
                     firstName,
                     lastName,
@@ -89,7 +89,7 @@ describe('User tests', () => {
                 })).toEqual(false);
             });
             it('Should be false when firstName parameter type is incorrect', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName: true,
                     lastName,
@@ -97,7 +97,7 @@ describe('User tests', () => {
                 })).toEqual(false);
             });
             it('Should be false when lastName parameter type is incorrect', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName,
                     lastName: 3.14,
@@ -105,7 +105,7 @@ describe('User tests', () => {
                 })).toEqual(false);
             });
             it('Should be false when password parameter type is incorrect', () => {
-                expect(Resource_1.Resource.isValid(userCreationParamSchema, {
+                expect(resource_1.Resource.isValid(userCreationParamSchema, {
                     email,
                     firstName,
                     lastName,

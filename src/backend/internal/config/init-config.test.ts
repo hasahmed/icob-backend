@@ -3,7 +3,7 @@ import * as path from 'path';
 import { InitConfig } from './init-config';
 import { ConfMailer } from './conf-mailer';
 import { ConfCrypt } from './conf-crypt';
-import { Encryptor } from '../Encryptor';
+import { Encryptor } from '../encryptor';
 import { ConfigHandler } from './conf-handler';
 
 const testInitConfigPath = path.join(__dirname, 'test-conf.json');

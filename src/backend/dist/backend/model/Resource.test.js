@@ -6,4 +6,4 @@ describe('Resource Tests', () => {
         expect(true).toBeTruthy();
     });
 });
-//# sourceMappingURL=Resource.test.js.map
+//# sourceMappingURL=resource.test.js.map

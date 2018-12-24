@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Encryptor_1 = require("../internal/Encryptor");
+const encryptor_1 = require("../internal/encryptor");
 class Resource {
     constructor() {
         this.created = Date.now();
-        this.id = Encryptor_1.Encryptor.newUuid();
+        this.id = encryptor_1.Encryptor.newUuid();
     }
     static isValid(schema, inQuestion) {
         if (!inQuestion)

@@ -9,12 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sql_handler_1 = require("./sql-handler");
-const MailHandler_1 = require("./MailHandler");
 const schema_1 = require("../db/schema");
 const model_1 = require("../model");
 class AccountManger {
-    constructor(mailHandler = new MailHandler_1.MailHandler()) {
-        this.mailHandler = mailHandler;
+    constructor() {
         this.tmpAuthKeyTable = new Map();
     }
     acctCreate(acctParams) {
@@ -22,18 +20,6 @@ class AccountManger {
             const user = new model_1.User(acctParams.email, acctParams.firstName, acctParams.lastName, acctParams.password);
             this.tmpAuthKeyTable.set(acctParams.email, user.tmpAuthHash);
             yield sql_handler_1.SqlHandler.createAccount(user);
-            const mailParams = {
-                to: acctParams.email,
-                subject: 'Welcome to Begin',
-                html: `Hello ${acctParams.firstName},
-			<br />
-			Welcome to Begin. The following is your confirmation code.
-			<pre>
-			${user.tmpAuthHash}
-			</pre>
-			`
-            };
-            this.mailHandler.sendMail(mailParams);
             return true;
         });
     }

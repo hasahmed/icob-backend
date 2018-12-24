@@ -37,14 +37,16 @@
     "migrations": "npm run knex-script -- migrate:latest",
     "nodemon": "nodemon",
     "jest": "jest",
+
     "dist-clear": "rmtrash src/backend/dist",
     "init-config": "node src/backend/dist/backend/bin/init-config.js",
-    "backend:build": "npm run tsc -- -p src/backend",
-    "backend:build:watch": "npm run backend:build -- --watch",
-    "backend:test": "jest --config=src/backend/jest.conf.json",
-    "backend:serve": "nodemon --config src/backend/nodemon.json src/backend/dist/backend/Server.js",
-    "backend:watch": "concurrently --kill-others 'npm:backend:build:watch' 'npm:backend:serve'",
-    "backend:rebuild:watch": "npm run dist-clear && npm run backend:build && npm run backend:watch",
+
+    "build": "npm run tsc -- -p src/backend",
+    "start": "npm run build -- --watch",
+    "test": "jest --config=src/backend/jest.conf.json",
+    "serve": "nodemon --config src/backend/nodemon.json src/backend/dist/backend/server.js",
+    "watch": "concurrently --kill-others 'npm:build:watch' 'npm:serve'",
+    "rebuild:watch": "npm run dist-clear && npm run build && npm run watch",
     "postinstall": "npm run backend:build"
   }
 }

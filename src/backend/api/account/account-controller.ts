@@ -1,9 +1,9 @@
 import { AppController } from '../api-common/app-controller';
-import { AccountManger } from '../../internal/AccountManager';
+import { AccountManger } from '../../internal/account-manager';
 import { SqlHandler } from '../../internal/sql-handler';
 import { User } from '../../model';
-import { Encryptor } from '../../internal/Encryptor';
-import { Resource } from '../../model/Resource';
+import { Encryptor } from '../../internal/encryptor';
+import { Resource } from '../../model/resource';
 import { MemDb } from '../../internal/types';
 import { DB } from '../../internal/interfaces';
 

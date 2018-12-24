@@ -3,7 +3,7 @@ import * as path from 'path';
 import { ConfigHandler } from './conf-handler';
 import { ConfAll } from './conf-all';
 import { ConfMailer } from './conf-mailer';
-import { Encryptor } from '../Encryptor';
+import { Encryptor } from '../encryptor';
 import { ConfCrypt } from './conf-crypt';
 
 const testConfPath = path.join(process.cwd(), 'src', 'backend', 'tmp', 'testConf.json.tmp');
@@ -24,7 +24,6 @@ const confMailer = new ConfMailer(
 	MAILER_SERVICE
 );
 const confAll = new ConfAll(
-	confMailer,
 	confCrypt
 );
 
@@ -58,11 +57,6 @@ describe('ConfHandler Tests', () => {
 		});
 		it('Should read in the conf if it already exists', () => {
 			expect(localConfH.confExists()).toEqual(true);
-		});
-		it('Should have the config values for mailer', () => {
-			expect(localConfH.mailer.service).toEqual(MAILER_SERVICE);
-			expect(localConfH.mailer.hashedPassword).toEqual(MAILER_ENC_PASS);
-			expect(localConfH.mailer.email).toEqual(MAILER_EMAIL);
 		});
 		it('Should have the config values ConfCrypt', () => {
 			expect(localConfH.crypt).toBeTruthy();

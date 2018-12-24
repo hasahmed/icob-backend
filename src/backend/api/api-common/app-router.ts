@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { RouterOptions } from './router-options';
 import { AppController } from './app-controller';
 import { RouterPaths } from '../../../common/ApiRoutes';
-import { Resource } from '../../model/Resource';
+import { Resource } from '../../model/resource';
 
 
 export class AppRouter<T extends Resource> {

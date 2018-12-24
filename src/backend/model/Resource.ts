@@ -1,4 +1,4 @@
-import { Encryptor } from '../internal/Encryptor';
+import { Encryptor } from '../internal/encryptor';
 
 export class Resource {
 	public created: number = Date.now();

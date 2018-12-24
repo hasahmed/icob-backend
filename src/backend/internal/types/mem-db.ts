@@ -1,6 +1,5 @@
 import { DB, WhereQuery,  } from '../interfaces';
-import { Resource } from '../../model/Resource';
-import { Workflow } from '../../model';
+import { Resource } from '../../model/resource';
 
 export class MemDb<T extends Resource> implements DB<T> {
 

@@ -1,5 +1,5 @@
-import { Encryptor } from '../../internal/Encryptor';
-import { Resource } from '../Resource';
+import { Encryptor } from '../../internal/encryptor';
+import { Resource } from '../resource';
 
 export class User extends Resource {
 	public activated: boolean = false;

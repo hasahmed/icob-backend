@@ -2,7 +2,7 @@ import * as prompts from 'prompts';
 import { ConfAll } from './conf-all';
 import { ConfMailer } from './conf-mailer';
 import { APP_CONF } from '../../conf';
-import { Encryptor } from '../Encryptor';
+import { Encryptor } from '../encryptor';
 import { ConfCrypt } from './conf-crypt';
 import { ConfigHandler } from './conf-handler';
 import { ConfDb } from './conf-db';
@@ -38,26 +38,6 @@ export class InitConfig {
 					},
 					{
 							type: 'text',
-							name: 'mailerEmail',
-							initial: 'customerservice@begin.com',
-							message: `Email customers will recieve emails from when they sign up`
-					},
-					{
-							type: 'text',
-							name: 'mailerService',
-							initial: 'gmail',
-							message: 'Email service provider of entered email'
-					},
-					{
-							type: 'password',
-							name: 'mailerPass',
-							format: (val, values) => {
-								return new Encryptor(new ConfCrypt(values.cryptSecret)).encrypt(val);
-							},
-							message: 'Password of given email. (It will be encrypted)'
-					},
-					{
-							type: 'text',
 							name: 'adminUsername',
 							initial: 'beginadmin',
 							message: 'Username of the application admin'
@@ -74,35 +54,42 @@ export class InitConfig {
 					{
 						type: 'text',
 						name: 'dbName',
-						initial: 'begin-db',
+						initial: 'icob-app-db',
 						message: 'Name of the database'
 					},
 					{
-						type: 'text',
-						name: 'dbUsername',
-						initial: 'dbuser',
-						message: 'Username of Postgress user'
-					},
-					{
-						type: 'password',
-						name: 'dbPass',
-						format: (val) => {
-									return Encryptor.hash(val);
-						},
-						message: 'Password of the Postgress user'
-					},
-					{
-						type: 'text',
-						name: 'dbHost',
-						initial: 'localhost',
-						message: 'Host of the Postgress database'
-					},
-					{
 						type: 'number',
-						name: 'dbPort',
+						name: 'serverPort',
 						initial: 3030,
-						message: 'Port of the Postgress database'
+						message: 'The port the server will serve on'
 					}
+					// postgress specific
+					// {
+					// 	type: 'text',
+					// 	name: 'dbUsername',
+					// 	initial: 'dbuser',
+					// 	message: 'Username of Postgress user'
+					// },
+					// {
+					// 	type: 'password',
+					// 	name: 'dbPass',
+					// 	format: (val) => {
+					// 				return Encryptor.hash(val);
+					// 	},
+					// 	message: 'Password of the Postgress user'
+					// },
+					// {
+					// 	type: 'text',
+					// 	name: 'dbHost',
+					// 	initial: 'localhost',
+					// 	message: 'Host of the Postgress database'
+					// },
+					// {
+					// 	type: 'number',
+					// 	name: 'dbPort',
+					// 	initial: 3030,
+					// 	message: 'Port of the Postgress database'
+					// }
 			] as prompts.PromptObject<string>[];
 			if (this.injections) {
 				// here for testing purposes
@@ -110,21 +97,15 @@ export class InitConfig {
 			}
 			const answers = await prompts(questions);
 			const outConf = new ConfAll(
-					new ConfMailer(
-							answers.mailerEmail,
-							answers.mailerPass
-					),
 					new ConfCrypt(answers.cryptSecret),
-					new ConfDb(
-						answers.dbName,
-						answers.dbUsername,
-						answers.dbPass,
-						answers.dbHost,
-						answers.dbPort,
-					),
-					new ConfEnv(
-						answers.env
-					)
+					new ConfEnv( answers.env)
+					// new ConfDb(
+					// 	answers.dbName,
+					// 	answers.dbUsername,
+					// 	answers.dbPass,
+					// 	answers.dbHost,
+					// 	answers.dbPort,
+					// ),
 			);
 			const jsonOut = JSON.stringify(outConf, null, 2);
 			if (this.writeOut) {

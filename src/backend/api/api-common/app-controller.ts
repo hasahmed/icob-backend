@@ -1,5 +1,5 @@
 import { DB, WhereQuery } from "../../internal/interfaces";
-import { Resource } from "../../model/Resource";
+import { Resource } from "../../model/resource";
 import { InvalidIdError } from "../../../common/types";
 
 /**

@@ -1,9 +1,9 @@
 import 'jest';
 import { SqlHandler } from '../../internal/sql-handler';
-import { Encryptor } from '../../internal/Encryptor';
+import { Encryptor } from '../../internal/encryptor';
 import { User } from '../../model';
 import { AccountController } from './account-controller';
-import { AccountManger } from '../../internal/AccountManager';
+import { AccountManger } from '../../internal/account-manager';
 
 const acctCont = new AccountController(
 	new AccountManger()

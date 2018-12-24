@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Encryptor_1 = require("../../internal/Encryptor");
-const Resource_1 = require("../Resource");
-class User extends Resource_1.Resource {
+const encryptor_1 = require("../../internal/encryptor");
+const resource_1 = require("../resource");
+class User extends resource_1.Resource {
     constructor(email, firstName, lastName, password) {
         super();
         this.email = email;
@@ -10,15 +10,15 @@ class User extends Resource_1.Resource {
         this.lastName = lastName;
         this.password = password;
         this.activated = false;
-        this.tmpAuthHash = Encryptor_1.Encryptor.newUuid();
+        this.tmpAuthHash = encryptor_1.Encryptor.newUuid();
         this.created = Date.now();
-        this.id = Encryptor_1.Encryptor.newUuid();
-        this.password = Encryptor_1.Encryptor.hash(this.password);
+        this.id = encryptor_1.Encryptor.newUuid();
+        this.password = encryptor_1.Encryptor.hash(this.password);
     }
 }
 exports.User = User;
 (function (User) {
-    class CreationParams extends Resource_1.Resource.CreationParams {
+    class CreationParams extends resource_1.Resource.CreationParams {
         constructor(params) {
             super(params);
             this.email = '';

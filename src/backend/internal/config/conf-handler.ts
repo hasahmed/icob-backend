@@ -24,7 +24,6 @@ export class ConfigHandler {
 	 * accessesors to the specific configs
 	 * instances
 	 */
-	public get mailer(): ConfMailer { return this.confAll.mailer; }
 	public get crypt(): ConfCrypt { return this.confAll.crypt; }
 	public get env(): ConfEnv { return this.confAll.env; }
 	public get db(): ConfDb { return this.confAll.db; }
