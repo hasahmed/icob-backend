@@ -52,7 +52,7 @@ class WorkflowRouter extends app_router_1.AppRouter {
             }
         });
         const nullHanlder = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            res.send();
+            res.send(1);
         });
         this.router.post(ApiRoutes_1.WORKFLOW_ROUTES.ENDPOINTS.ROOT, creationHandler);
         this.router.get(ApiRoutes_1.WORKFLOW_ROUTES.ENDPOINTS.ROOT, getAllHanlder);
