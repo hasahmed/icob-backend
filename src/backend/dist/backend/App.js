@@ -20,7 +20,7 @@ class App {
     }
     listen() {
         this.app.listen(this.PORT, () => {
-            console.log(`Node server listening on http://localhost:${this.PORT}`);
+            console.log(`listening on port ${this.PORT}`);
         });
     }
 }

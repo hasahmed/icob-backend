@@ -41,11 +41,13 @@
     "dist-clear": "rmtrash src/backend/dist",
     "init-config": "node src/backend/dist/backend/bin/init-config.js",
 
+    "runner": "node",
     "build": "npm run tsc -- -p src/backend",
-    "start": "npm run build -- --watch",
     "test": "jest --config=src/backend/jest.conf.json",
+    "start": "npm run runner -- src/backend/dist/backend/server.js",
     "serve": "nodemon --config src/backend/nodemon.json src/backend/dist/backend/server.js",
-    "watch": "concurrently --kill-others 'npm:build:watch' 'npm:serve'",
+    "dev": "concurrently --kill-others 'npm:build:watch' 'npm:serve'",
+    "build:watch": "npm run build -- --watch",
     "rebuild:watch": "npm run dist-clear && npm run build && npm run watch",
     "postinstall": "npm run backend:build"
   }

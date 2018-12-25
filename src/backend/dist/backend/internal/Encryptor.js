@@ -29,4 +29,4 @@ class Encryptor {
     }
 }
 exports.Encryptor = Encryptor;
-//# sourceMappingURL=Encryptor.js.map
+//# sourceMappingURL=encryptor.js.map

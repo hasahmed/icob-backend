@@ -29,4 +29,4 @@ exports.Resource = Resource;
     }
     Resource.CreationParams = CreationParams;
 })(Resource = exports.Resource || (exports.Resource = {}));
-//# sourceMappingURL=Resource.js.map
+//# sourceMappingURL=resource.js.map

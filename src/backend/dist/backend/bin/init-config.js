@@ -8,10 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const init_config_1 = require("../internal/config/init-config");
+const prompt_config_1 = require("../internal/config/prompt-config");
 const conf_1 = require("../conf");
 (() => __awaiter(this, void 0, void 0, function* () {
-    yield new init_config_1.InitConfig().prompt();
+    yield new prompt_config_1.PromptConfig().prompt();
     console.log('Confg file written to ' + conf_1.APP_CONF);
 }))();
 //# sourceMappingURL=init-config.js.map

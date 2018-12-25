@@ -4,6 +4,6 @@ export class ConfDb {
 		public username: string="",
 		public password: string="",
 		public host: string="",
-		public port: number=0
+		public port: number=3031
 	) {}
 }

@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("jest");
-const User_1 = require("./User");
+const user_1 = require("./user");
 const resource_1 = require("../resource");
 describe('User tests', () => {
-    const userCreationParamSchema = new User_1.User.CreationParams();
+    const userCreationParamSchema = new user_1.User.CreationParams();
     const email = 'hello@good.com';
     const firstName = 'Hasan';
     const lastName = 'Ahmed';
     const password = 'whazzup';
-    const user = new User_1.User(email, firstName, lastName, password);
+    const user = new user_1.User(email, firstName, lastName, password);
     it('Should be created', () => {
         expect(user).toBeTruthy();
     });
@@ -31,7 +31,7 @@ describe('User tests', () => {
         expect(user.id).toEqual(jasmine.any(String));
     });
     describe('User.CreationParams', () => {
-        const ucp = new User_1.User.CreationParams();
+        const ucp = new user_1.User.CreationParams();
         it('Should have all falsey values by default', () => {
             for (const key in ucp) {
                 expect(ucp[key]).toBeFalsy();
@@ -115,10 +115,10 @@ describe('User tests', () => {
         });
         describe('User.CreationParams, construction tests', () => {
             it('Should be able to be created', () => {
-                expect(new User_1.User.CreationParams()).toBeTruthy();
+                expect(new user_1.User.CreationParams()).toBeTruthy();
             });
             it('Should be valid with parameters assigned', () => {
-                const params = new User_1.User.CreationParams({
+                const params = new user_1.User.CreationParams({
                     email: "Hello",
                     firstName: "whatsup",
                     lastName: "heya",
@@ -129,4 +129,4 @@ describe('User tests', () => {
         });
     });
 });
-//# sourceMappingURL=User.test.js.map
+//# sourceMappingURL=user.test.js.map

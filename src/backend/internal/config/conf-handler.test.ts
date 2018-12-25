@@ -2,7 +2,6 @@ import 'jest';
 import * as path from 'path';
 import { ConfigHandler } from './conf-handler';
 import { ConfAll } from './conf-all';
-import { ConfMailer } from './conf-mailer';
 import { Encryptor } from '../encryptor';
 import { ConfCrypt } from './conf-crypt';
 
@@ -14,17 +13,8 @@ const crydec = new Encryptor(
 	confCrypt
 );
 
-const MAILER_SERVICE = 'gmail';
-const MAILER_EMAIL = 'hello@goodbye.com';
-const MAILER_PLAIN_PASS = 'aGoodPassword';
-const MAILER_ENC_PASS = crydec.encrypt(MAILER_PLAIN_PASS);
-const confMailer = new ConfMailer(
-	MAILER_EMAIL,
-	MAILER_ENC_PASS,
-	MAILER_SERVICE
-);
 const confAll = new ConfAll(
-	confCrypt
+	// confCrypt
 );
 
 
@@ -63,12 +53,5 @@ describe('ConfHandler Tests', () => {
 			expect(localConfH.crypt.secret).toBeTruthy();
 			expect(localConfH.crypt.secret).toEqual(SECRET);
 		});
-		// this is a test that really belongs in the ecryptor
-		// it('Should be able to decrypt the mail password with crypt secret', () => {
-		// 	const encryptedMailPass = localConfH.mailer.hashedPassword;
-		// 	const locCryDec = new Encryptor(localConfH.crypt);
-		// 	const decrypted = locCryDec.decrypt(encryptedMailPass);
-		// 	expect(decrypted).toEqual(MAILER_PLAIN_PASS);
-		// });
 	});
 });

@@ -13,7 +13,6 @@ export class App {
     private STATIC_PATH
   ) {
     this.app.use(bodyParser.json());
-    // this.app.use(bodyParser.urlencoded());
     this.routers.forEach(router  => {
       this.app.use(router.paths.PATH_PREFIX, router.router);
     });
@@ -24,7 +23,7 @@ export class App {
 	}
 	public listen(){
     this.app.listen(this.PORT, () => {
-      console.log(`Node server listening on http://localhost:${this.PORT}`);
+      console.log(`listening on port ${this.PORT}`);
     });
 	}
 }

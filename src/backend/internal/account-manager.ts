@@ -1,6 +1,4 @@
 import { SqlHandler } from './sql-handler';
-// import { AccountCreationParams} from './types';
-// import * as uuidv4 from 'uuid/v4';
 import { UserSchema } from '../db/schema';
 import { User } from '../model';
 

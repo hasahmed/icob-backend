@@ -1,6 +1,4 @@
-// import { APP_CONF } from '../../../common/common-data'
 import * as fs from 'fs';
-import { ConfMailer } from './conf-mailer';
 import { ConfAll } from './conf-all';
 import { APP_CONF } from '../../conf';
 import { ConfCrypt } from './conf-crypt';

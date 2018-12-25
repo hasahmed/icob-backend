@@ -6,7 +6,7 @@ const SQLITE_DB_EXTEND = '-db.sqlite';
 const BACKEND_DIR = path.join('src', 'backend');
 const CONFIG_EXTEND = '-conf.json';
 
-export const APP_NAME = 'begin';
+export const APP_NAME = 'icob-app';
 
 
 export const APP_CONF_NAME = '.' + APP_NAME + CONFIG_EXTEND;
