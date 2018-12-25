@@ -22,6 +22,7 @@
     "knex": "^0.15.2",
     "nodemailer": "^4.7.0",
     "nodemon": "^1.18.6",
+    "pg": "^7.7.1",
     "promise": "8.0.1",
     "prompts": "git+https://github.com/hasahmed/prompts.git",
     "random-name": "^0.1.2",
@@ -37,10 +38,8 @@
     "migrations": "npm run knex-script -- migrate:latest",
     "nodemon": "nodemon",
     "jest": "jest",
-
     "dist-clear": "rmtrash src/backend/dist",
     "init-config": "node src/backend/dist/backend/bin/init-config.js",
-
     "runner": "node",
     "build": "npm run tsc -- -p src/backend",
     "test": "jest --config=src/backend/jest.conf.json",

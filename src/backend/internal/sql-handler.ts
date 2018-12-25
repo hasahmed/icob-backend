@@ -35,7 +35,7 @@ export class SqlHandler {
 				dbConf = devDbConf;
 				break;
 			case 'prod':
-				dbConf = prodDbConf;
+				dbConf = devDbConf; //we always use the same database for now
 				break;
 			default:
 				throw new Error("Unknown ConfEnv.env setting. Should be one of 'dev', 'stag', 'prog', but was:" + conf.env.env);
@@ -55,15 +55,16 @@ export class SqlHandler {
 	}
 	public static async getUserWhere(where: Object): Promise<User|false> {
 		try {
-			return (await SqlHandler.knexInst()(UserSchema.tableName[1]!).where(where))[0];
+			const user = (await SqlHandler.knexInst()(UserSchema.tableName[1]!).where(where))[0];
+			return user;
 		} catch(err) {
 			return false;
 		}
 	}
-	public static async updateUser(user: User): Promise<User|false> {
+	public static async updateUser(userId: number, user: User): Promise<User|false> {
 		try {
 			return SqlHandler.knexInst()(UserSchema.tableName[1]!)
-			.where(UserSchema.id[1], user.id)
+			.where('id', userId)
 			.update(user);
 		} catch(err) {
 			return false;

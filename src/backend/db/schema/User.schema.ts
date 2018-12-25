@@ -1,11 +1,7 @@
 export const UserSchema = {
 		tableName: [null, 'users'],
-		email: ['string', 'email'],
+		username: ['string', 'email'],
+		password: ['string', 'password'],
 		firstName: ['string', 'fistName'],
 		lastName: ['string', 'lastName'],
-		password: ['string', 'password'],
-		activated: ['boolean', 'activated'],
-		tmpAuthHash: ['string', 'tmpAuthHash'],
-		created: ['integer', 'created'],
-		id: ['string', 'id']
 };

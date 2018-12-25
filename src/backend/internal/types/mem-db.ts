@@ -7,7 +7,8 @@ export class MemDb<T extends Resource> implements DB<T> {
 
 
 	store(thing: T): void {
-		this.db.set(thing.id, thing);
+		// this.db.set(thing.id, thing);
+		// this.db.set('', thing); // 
 	}
 	retrieve(thingId: string): T|undefined {
 		return this.db.get(thingId);

@@ -1,7 +1,7 @@
 import path = require('path');
-import { AccountRouter }  from './api';
 import { App } from './app';
 import { ConfigHandler } from './internal/config/conf-handler';
+import { UserRouter } from './api/user/user-router';
 
 
 // /src/frontend/build
@@ -12,7 +12,7 @@ const STATIC_PATH = path.join(process.cwd(), 'src', 'frontend', 'build');
 
 const app = new App(
 	[
-		new AccountRouter(),
+		new UserRouter()
 	],
 	conf.env.port,
 	STATIC_PATH

@@ -10,6 +10,8 @@ exports.up = async function (knex: Knex): Promise<any> {
 				if (key === 'tableName') continue;
 				table[UserSchema[key][0]](key);
 			}
+			table.timestamp('created');
+			table.increments('id').unsigned;
 		})
 	);
 };
