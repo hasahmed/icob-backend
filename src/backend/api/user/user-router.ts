@@ -58,7 +58,7 @@ export class UserRouter extends AppRouter<User> {
 				}
 				else {
 					const status = await cont.acctCreate(req.body);
-					res.send({accountCreated: status});
+					res.send(status);
 				}
 			}
 			else {

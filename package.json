@@ -40,6 +40,7 @@
     "jest": "jest",
     "dist-clear": "rmtrash src/backend/dist",
     "init-config": "node src/backend/dist/backend/bin/init-config.js",
+    "init": "npm run migrations && npm run init-config",
     "runner": "node",
     "build": "npm run tsc -- -p src/backend",
     "test": "jest --config=src/backend/jest.conf.json",
@@ -48,6 +49,6 @@
     "dev": "concurrently --kill-others 'npm:build:watch' 'npm:serve'",
     "build:watch": "npm run build -- --watch",
     "rebuild:watch": "npm run dist-clear && npm run build && npm run watch",
-    "postinstall": "npm run backend:build"
+    "postinstall": "npm run build"
   }
 }
